@@ -22,27 +22,28 @@ public class VersionController {
 	public VersionController(VersionMapper mapper) {
 		this.mapper = mapper;
 	}
-	
+	// 버전 테이블에 저장된 모든 정보를 받아옴, 페이징 가능
 	@GetMapping("all")
 	public List<VersionModel> codeAll(@RequestParam(value="page" , defaultValue = "") String _page,
 										@RequestParam(value="amount", defaultValue = "10")String _amount){
 		
 		System.out.println(_page+""+_amount);
 		int amount = Integer.valueOf(_amount);
+		//page가 -1이면 전체 출력 실행
 		int page = _page.isEmpty()? -1 : (Integer.valueOf(_page) -1 )* amount;
+		//-1이 아니면 입력된 값에 맞게 페이징해서 출력
 		if(page == -1)return this.mapper.codeVersionAll();
 		
 		return mapper.codeVersionAllPaging(page,amount);
 	}
-	
+	//idx번호에 해당하는 버전들을 전체 출력
 	@GetMapping("list/{id}")
 	public List<VersionModel> codeVersionGet(@PathVariable("id") String id){
 		int idx = Integer.valueOf(id);
 		return this.mapper.idVersionGet(idx);
 	}
 	
-	
-	
+	//해당하는 버전의 정보를 받아옴
 	@GetMapping("getCode")
 	public String getCodeVersionData(@RequestParam(value="id",defaultValue = "") String id,
 										   @RequestParam(value="ver",defaultValue = "") String version) {
@@ -55,7 +56,7 @@ public class VersionController {
 			return "값이 일치하는 함수가 없습니다.";
 		}
 	}
-	
+	// 해당하는 버전을 삭제
 	@GetMapping("remove")
 	public String deleteCode(@RequestParam(value="id",defaultValue = "") String _idx,
 							@RequestParam(value="ver",defaultValue = "") String _ver) {
@@ -71,7 +72,7 @@ public class VersionController {
 		}
 		return "삭제되었습니다.";
 	}
-	
+	// 해당하는 버전을 일의 자리를 +1함
 	@GetMapping("upgrade")
 	public String upgradeVersion(@RequestParam(value="id",defaultValue = "") String _idx,
 							@RequestParam(value="ver",defaultValue = "") String _ver,

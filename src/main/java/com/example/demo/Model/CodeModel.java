@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class CodeModel {
 
-	private int cd_idx;				//코드 고유번호 auto_increment		NUM
+	private int cd_idx;				//코드 고유번호 auto_increment		int
 	private String cd_name;			//코드 이름(함수이름) 				VARCHAR2(50)
 	private String cd_code;			//코드(함수코드)					VARCHAR2(2000)
 	private String cd_maker;		//코드 작성자						VARCHAR2(50)
 	private String cd_contents;		//코드 설명						VARCHAR2(1000)
 	private Date cd_update;			//코드 업데이트 일자					DATE
-	private String cd_open;		//코드 사용가능 확인 default = Y     CHAR(1)  (Y,N) Y = 사용 가능, N = 사용 불가능
-	private int cd_use_cnt;
+	private String cd_open;			//코드 사용가능 확인 default = Y     CHAR(1)  (Y,N) Y = 사용 가능, N = 사용 불가능
+	private int cd_use_cnt;			//사용횟수 						int
 	
 	
 	

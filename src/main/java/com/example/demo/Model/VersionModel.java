@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class VersionModel {
 	
-	private int cd_idx;
-	private String ver_name;
-	private String ver_code;
-	private String ver_maker;
-	private String ver_contents;
-	private Date ver_upload_date;
-	private String ver_open;
-	private double ver_version;
-	private int ver_use_cnt;
+	private int cd_idx;						//코드 번호 (FK)
+	private String ver_name;				//코드 이름(함수이름) 				VARCHAR2(50)
+	private String ver_code;				//코드(함수코드)					VARCHAR2(2000)
+	private String ver_maker;				//코드 작성자						VARCHAR2(50)
+	private String ver_contents;			//코드 설명						VARCHAR2(1000)
+	private Date ver_upload_date;			//코드 업데이트 일자					DATE
+	private String ver_open;				//코드 사용가능 확인 default = Y     CHAR(1)  (Y,N) Y = 사용 가능, N = 사용 불가능
+	private double ver_version;				//버전 번호						double
+	private int ver_use_cnt;				//사용횟수 						int
 	
 	public VersionModel() {}
 	

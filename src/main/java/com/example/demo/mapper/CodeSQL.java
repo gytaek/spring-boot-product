@@ -6,7 +6,7 @@ public class CodeSQL {
 	
 	
 	public SQL query = null;
-
+	//함수 업그래이드 
 	public String UpdateCode( int id,String code,String contents,String name,String open) {
 		 query = new SQL() {
 			{
@@ -26,7 +26,7 @@ public class CodeSQL {
 		query.WHERE("cd_idx = " + id);
 		return query.toString();
 	}
-	
+	//함수 검색
 	public String searchCode(String key, String values,int page, int amount){
 		query = new SQL() {
 			{
